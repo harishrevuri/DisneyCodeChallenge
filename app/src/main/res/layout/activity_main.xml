@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.view.main.MainActivity">
+
+
+    <include
+        android:id="@+id/layoutBaseToolbar"
+        layout="@layout/layout_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvReservedGuests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/heading_these_guests_have_reservations"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingVertical="@dimen/_12sdp"
+        android:text="@string/these_guests_have_reservations"
+        android:textColor="@color/font_color"
+        android:textSize="@dimen/text_size_eighteen"
+        app:fontFamily="@font/avenir_heavy"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutBaseToolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsvContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:paddingBottom="@dimen/_20sdp"
+        app:layout_constraintBottom_toTopOf="@id/clBottom"
+        app:layout_constraintTop_toBottomOf="@id/tvReservedGuests">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clMainContent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvReservedGuests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_guests" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNeedReservationGuests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:contentDescription="@string/heading_these_guests_need_reservations"
+                android:text="@string/these_guests_need_reservations"
+                android:textColor="@color/font_color"
+                android:textSize="@dimen/text_size_eighteen"
+                app:fontFamily="@font/avenir_heavy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rvReservedGuests" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNeedReservationGuests"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toBottomOf="@id/tvNeedReservationGuests"
+                tools:itemCount="2"
+                tools:listitem="@layout/item_guests" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tvInfo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/_16sdp"
+            android:drawablePadding="@dimen/_10sdp"
+            android:paddingBottom="@dimen/_10sdp"
+            android:text="@string/warning_info"
+            android:textColor="@color/font_color"
+            android:textSize="@dimen/text_size_fourteen"
+            app:drawableLeftCompat="@drawable/ic_info"
+            app:fontFamily="@font/avenir_roman"
+            app:layout_constraintBottom_toTopOf="@id/clWarning" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnContinue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:enabled="false"
+            android:fontFamily="@font/avenir_heavy"
+            android:gravity="center"
+            android:letterSpacing="0"
+            android:minHeight="@dimen/_44sdp"
+            android:text="@string/continue_label"
+            android:textAllCaps="false"
+            android:textColor="@color/button_continue_text_states"
+            android:textSize="@dimen/text_size_sixteen"
+            app:backgroundTint="@color/button_continue_states"
+            app:cornerRadius="@dimen/_22sdp"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#132C44"
+            android:padding="@dimen/_16sdp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:visibility="invisible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_5sdp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_close" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReservationNeeded"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/avenir_black"
+                android:text="@string/reservation_needed"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_sixteen"
+                app:layout_constraintEnd_toStartOf="@id/ivClose"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvReservationWarning"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:fontFamily="@font/avenir_roman"
+                android:text="@string/warning"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_sixteen"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/ivClose"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvReservationNeeded" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="dataModel"
+            type="com.disneycodechallenge.ui.view.main.model.GuestsModel" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/itemGuests"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cbGuest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/avenir_roman"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:text="@{dataModel.guestName}"
+            android:checked="@{dataModel.guestChecked}"
+            android:textColor="@color/font_color"
+            android:textSize="@dimen/text_size_sixteen"
+            app:buttonTint="#118900"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Albert Einstein" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
